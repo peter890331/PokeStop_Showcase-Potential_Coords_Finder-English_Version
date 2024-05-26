@@ -3,7 +3,7 @@
     程式名稱: PokeStop_Showcase-Potential_coords_Finder-English_Version
     作者: Peter Yu
     版本: 2.0
-    日期: 2024/05/23
+    日期: 2024/05/26
     用途: 這是一個座標查詢器網頁，用來查詢Pokémon GO中在其他時區即將結束且可能未被佔領的選秀會當地座標。這些座標由我手動不定時添加，我有空的話啦。
     備註: 我知道寫得很亂，但我懶得改。
 -->
@@ -68,10 +68,6 @@
     }
     
   </style>
-  <!-- Google 廣告 驗證 -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9957114939030044"
-  crossorigin="anonymous"></script>
-
 </head>
 <body>
   <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pokemon_go_icon.png" alt="pokemon_go_icon.png" style="width: auto; height: 100px;">
@@ -81,26 +77,11 @@
     <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/earth.png" alt="earth.png" style="width: auto; height: 75%; position: absolute; top: 2px; right: 15px; z-index: -1; transform: rotate(10deg);">
   </div>
   <div id="formContainer">
-    <label for="datetime">請選擇寶可補給站選秀會在台灣時區結束的日期與時間：</label>
+    <label for="datetime">Please select the date and time that the PokeStop Showcase end in your current time zone: </label>
     <div id="confirmButtonContainer">
       <input type="datetime-local" id="datetime" name="datetime">
-      <button id="confirmButton">確定</button>
+      <button id="confirmButton">OK</button>
     </div>
-
-    <!-- Google 廣告 -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9957114939030044"
-     crossorigin="anonymous"></script>
-    <!-- PokeStop_Showcase-Potential_coords_Finder-English_Version-1 -->
-    <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9957114939030044"
-     data-ad-slot="8517705457"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-    <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
     <p id="result"></p>
   </div>
 
@@ -205,14 +186,14 @@
               }
               const formattedCoordinate = coordinate.map(coord => coord.toFixed(5));
               // resultText += `UTC ${utcOffset}：  「${formattedCoordinate[0]}, ${formattedCoordinate[1]}」 <button onclick="copyToClipboard("${formattedCoordinate[0]}, ${formattedCoordinate[1]}")">複製</button><br>`;
-              resultText += `UTC ${utcOffset}，剩餘時間 ${hoursDiff} 小時 ${minutesDiff} 分鐘：<br>「${formattedCoordinate[0]}, ${formattedCoordinate[1]}」<br><button class="copyButton" onclick='copyToClipboard("${formattedCoordinate[0]}, ${formattedCoordinate[1]}")'>複製</button><br><br>`;
+              resultText += `UTC ${utcOffset}，Remaining Time ${hoursDiff} hours ${minutesDiff} minutes: <br>「${formattedCoordinate[0]}, ${formattedCoordinate[1]}」<br><button class="copyButton" onclick='copyToClipboard("${formattedCoordinate[0]}, ${formattedCoordinate[1]}")'>Copy</button><br><br>`;
               
           }
           resultElement.innerHTML = resultText;
           show_pikachu_say_yes_Image();
           } 
           else {
-          resultElement.innerHTML = "找不到符合條件的潛在座標。";
+          resultElement.innerHTML = "Can't find any Potential Coords.";
           show_pikachu_say_no_Image();
           }
         });
@@ -235,7 +216,7 @@
       .then(() => {
         // 建立一個提示框並顯示
         const alertBox = document.createElement("div");
-        alertBox.innerHTML = "座標已複製到剪貼簿";
+        alertBox.innerHTML = "Copied";
         alertBox.id = "alertBox";
         alertBox.style.cssText = `
           position: fixed;
@@ -421,7 +402,7 @@
   </script>
 
   <footer style="position: fixed;">
-    <p>Copyright © Peter Yu，僅供參考，不負任何法律責任。其餘詳細內容可見我的<a href="https://github.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version">GitHub</a>，喜歡的話可以幫我加個Star喔！謝謝。</p>
+    <p>Copyright © Peter Yu, for information only, no legal responsibility. The rest of the details can be found on my <a href="https://github.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version">GitHub</a>, if you like it, please add a star for me ! Thanks.</p>
   </footer>
 
 </body>
