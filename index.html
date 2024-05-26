@@ -106,28 +106,19 @@
         console.log("當前UTC+0時間: " + nowTWDate.format("MM/DD HH:mm"));
 
         // 以時區ID處理夏令和冬令時區，獲得當地時間
-        const nowLocalTime = nowTWDate.clone().tz(timezoneId[0]);
+        const localTime = moment(nowTWDate).tz(timezoneId[0]);
         console.log("當地時間: " + localTime.format("MM/DD HH:mm"));
 
-        // 設置當地時間的活動結束時間
-        const endTimeLocal = nowLocalTime.clone().set({
-          hour: selectedDateTime.getHours(),
-          minute: selectedDateTime.getMinutes(),
-          second: 0,
-          millisecond: 0
-        });
-        console.log("當地活動結束時間:", endTimeLocal.format("MM/DD HH:mm"));
-
         // 獲得當地UTC偏移量
-        const utcOffset = endTimeLocal.utcOffset() / 60;
-        console.log("UTC偏移量:", utcOffset);
+        const utcOffset = localTime.utcOffset()/60;
+        console.log("UTC偏移量: " + utcOffset);
 
         // 計算與指定時間的時間差
-        const timeDiff = endTimeLocal.diff(nowLocalTime, "minutes");
+        const timeDiff = selectedDateTime.diff(nowTWDate.add(-selectedDateTime.getTimezoneOffset()/60+utcOffset, "hours"), "minutes");
         const hoursDiff = Math.floor(timeDiff / 60);
         const minutesDiff = timeDiff % 60;
-
-        return { localTime: endTimeLocal, utcOffset, hoursDiff, minutesDiff };
+        
+        return { localTime, utcOffset, hoursDiff, minutesDiff };
       } 
       catch (error) {
         console.error("獲得指定座標的當地時間時出錯:", error);
@@ -137,19 +128,15 @@
 
     document.getElementById("confirmButton").addEventListener("click", async function() {
         // 取得輸入的日期與時間
-        var selectedTimeInput = new Date(document.getElementById("datetime").value);
+        var selectedDateTime = new Date(document.getElementById("datetime").value);
 
         // 檢查是否選擇了日期和時間
-        if (isNaN(selectedTimeInput.getTime())) {
-          showWarningMessage("Please select the date and time !");
+        if (isNaN(selectedDateTime.getTime())) {
+          showWarningMessage("請選擇日期與時間！");
           return; // 不執行後續代碼
         }
 
-        // 將時間字符串解析為 Date 對象
-        const [hours, minutes] = selectedTimeInput.split(':').map(Number);
-        selectedDateTime = new Date();
-        selectedDateTime.setHours(hours, minutes, 0, 0);
-
+        selectedDateTime = moment(selectedDateTime);
         console.log("輸入的結束時間： " + selectedDateTime.format("MM/DD HH:mm"));
         console.log("-----------------------------");
 
@@ -188,7 +175,7 @@
         // 將結果顯示在網頁上
         const resultElement = document.getElementById("result");
         if (top20Matches.length > 0) {
-          let resultText = "Closest Potential Coords: <br><br>";
+          let resultText = "最接近的潛在座標：<br><br>";
           for (const top20Matche of top20Matches) {
               const coordinate = top20Matche.coordinate;
               let utcOffset = top20Matche.utcOffset;
@@ -206,7 +193,7 @@
           show_pikachu_say_yes_Image();
           } 
           else {
-          resultElement.innerHTML = "Can't find any Potential Coords.";
+          resultElement.innerHTML = "找不到符合條件的潛在座標。";
           show_pikachu_say_no_Image();
           }
         });
@@ -214,7 +201,7 @@
         // 讀取資料庫中的座標數據
         async function fetchCoordinates() {
           try {
-            const response = await fetch("https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-Coords_Database/master/coordinates.json");
+            const response = await fetch("https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version-Coords_Database/master/coordinates.json");
             return await response.json();
           } 
           catch (error) {
