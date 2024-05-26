@@ -1,0 +1,398 @@
+
+<!--
+    程式名稱: PokeStop_Showcase-Potential_coords_Finder-English_Version
+    作者: Peter Yu
+    版本: 2.0
+    日期: 2024/05/23
+    用途: 這是一個座標查詢器網頁，用來查詢Pokémon GO中在其他時區即將結束且可能未被佔領的選秀會當地座標。這些座標由我手動不定時添加，我有空的話啦。
+    備註: 我知道寫得很亂，但我懶得改。
+-->
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokeStop_Showcase-Potential_coords_Finder-English_Version</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/my_icon.png">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 250vh;
+      margin-top: 100px;                  /* 設置上方 margin */
+      background-color: #7bcff7;
+    }
+    footer {
+      background-color: #54ddf5;        /* 背景顏色 */
+      color: #fff;                      /* 文字顏色 */
+      padding: 0px;                       /* 內邊距 */
+      text-align: center;                 /* 文字置中 */
+      position: fixed;                    /* 固定定位 */
+      bottom: 0;                          /* 距離視窗底部的距離 */
+      width: 100%;                        /* 寬度填滿視窗 */
+      font-size: 12px;
+    }
+    h1 {
+    font-size: 20px;                      /* 設定字體大小為 24 像素 */
+    }
+    #formContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    label {
+      margin-bottom: 20px;
+      font-size: 15px;                    /* 設置字體大小為 14 像素 */
+    }
+    input {
+      margin-bottom: 60px;
+    }
+    #confirmButtonContainer {
+      display: flex;
+      align-items: center;
+    }
+    #confirmButton {
+      margin-left: 10px;
+      margin-bottom: 60px;
+    }
+    #result {
+      position: relative;
+      margin-top: 10px;
+    }
+    .copyButton {
+      width: 300px; /* 按鈕的寬度，您可以根據需要調整 */
+    }
+    
+  </style>
+
+</head>
+<body>
+  <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pokemon_go_icon.png" alt="pokemon_go_icon.png" style="width: auto; height: 100px;">
+  <div style="position: relative;">
+    <h1>PokeStop_Showcase-Potential_coords_Finder-English_Version</h1>
+    <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/showcase_icon.png" alt="showcase_icon.png" style="width: auto; height: 75%; position: absolute; top: -10px; left: 50px; z-index: -1; transform: rotate(-20deg);">
+    <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/earth.png" alt="earth.png" style="width: auto; height: 75%; position: absolute; top: 2px; right: 15px; z-index: -1; transform: rotate(10deg);">
+  </div>
+  <div id="formContainer">
+    <label for="datetime">Please select the date and time when the PokeStop Showcase will end in the UTC+0 time zone：</label>
+    <div id="confirmButtonContainer">
+      <input type="datetime-local" id="datetime" name="datetime">
+      <button id="confirmButton">OK</button>
+    </div>
+    <p id="result"></p>
+  </div>
+
+  <!-- 引入 moment.js 庫 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <!-- 引入 browser-geo-tz 庫 -->
+  <script src="https://unpkg.com/browser-geo-tz@latest/dist/geotz.js"></script>
+  <!-- 引入 moment-timezone 庫 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+
+  <script>
+    // 獲得指定座標的當地時間和UTC偏移量
+    async function getLocalTimeAndUTCOffset(latitude, longitude, selectedDateTime) {
+      try {
+        // 使用 browser-geo-tz 庫来獲得指定座標的時區ID
+        var timezoneId = await GeoTZ.find(latitude, longitude);
+        console.log(timezoneId);
+        
+        // 獲得當前的UTC+0時間
+        var nowTWDate = moment();
+        console.log("當前UTC+0時間: " + nowTWDate.format("MM/DD HH:mm"));
+
+        // 以時區ID處理夏令和冬令時區，獲得當地時間
+        const localTime = moment(nowTWDate).tz(timezoneId[0]);
+        const localTime_ = moment(nowTWDate).tz(timezoneId[0]);
+        console.log("當地時間: " + localTime.format("MM/DD HH:mm"));
+
+        // 獲得當地UTC偏移量
+        const utcOffset = localTime.utcOffset()/60;
+        console.log("UTC偏移量: " + utcOffset);
+
+        // 計算與指定時間的時間差
+        const timeDiff = selectedDateTime.diff(localTime_.add(utcOffset, "hours"), "minutes");
+        const hoursDiff = Math.floor(timeDiff / 60);
+        const minutesDiff = timeDiff % 60;
+        
+        return { localTime, utcOffset, hoursDiff, minutesDiff };
+      } 
+      catch (error) {
+        console.error("獲得指定座標的當地時間時出錯:", error);
+        return null;
+      }
+    }
+
+    document.getElementById("confirmButton").addEventListener("click", async function() {
+        // 取得輸入的日期與時間
+        var selectedDateTime = new Date(document.getElementById("datetime").value);
+
+        // 檢查是否選擇了日期和時間
+        if (isNaN(selectedDateTime.getTime())) {
+          showWarningMessage("請選擇日期與時間！");
+          return; // 不執行後續代碼
+        }
+
+        selectedDateTime = moment(selectedDateTime);
+        console.log("輸入的結束時間： " + selectedDateTime.format("MM/DD HH:mm"));
+        console.log("-----------------------------");
+
+
+        // 讀取資料庫中的座標數據
+        const coordinates = await fetchCoordinates();
+
+        // 尋找符合條件的座標
+        let allMatches = [];
+        
+        // 遍歷資料庫中的所有座標數據
+        for (const coordinate of coordinates) {
+            const latitude = coordinate[0];
+            const longitude = coordinate[1];
+            console.log("緯度：" + latitude + ", 經度：" + longitude);
+            const { localTime, utcOffset, hoursDiff, minutesDiff } = await getLocalTimeAndUTCOffset(latitude, longitude, selectedDateTime);
+
+            // 如果當地時間還沒到輸入的日期與時間，且只篩選最接近的時區
+            if (localTime && localTime.format("MM/DD HH:mm") < selectedDateTime.format("MM/DD HH:mm")) {
+                console.log("localTime: " + localTime.format("MMDDHHmm"));
+                console.log("selectedDateTime: " + selectedDateTime.format("MMDDHHmm"));
+                console.log(Math.abs(localTime.format("MMDDHHmm") - selectedDateTime.format("MMDDHHmm")));
+                console.log("剩餘時間：" + hoursDiff + " 小時 " + minutesDiff + " 分鐘");
+                const Diff = Math.abs(localTime.format("MMDDHHmm") - selectedDateTime.format("MMDDHHmm"));
+                allMatches.push({ coordinate, utcOffset, hoursDiff, minutesDiff, Diff }); 
+            }
+            console.log("-----------------------------");
+        }
+
+        // 根據時間差排序所有匹配
+        allMatches.sort((a, b) => a.Diff - b.Diff);
+
+        // 只輸出前 20 個匹配
+        const top20Matches = allMatches.slice(0, 20);
+
+        // 將結果顯示在網頁上
+        const resultElement = document.getElementById("result");
+        if (top20Matches.length > 0) {
+          let resultText = "最接近的潛在座標：<br><br>";
+          for (const top20Matche of top20Matches) {
+              const coordinate = top20Matche.coordinate;
+              let utcOffset = top20Matche.utcOffset;
+              let hoursDiff = top20Matche.hoursDiff;
+              let minutesDiff = top20Matche.minutesDiff;
+              if (utcOffset >= 0) {
+                utcOffset = `+${utcOffset}`;
+              }
+              const formattedCoordinate = coordinate.map(coord => coord.toFixed(5));
+              // resultText += `UTC ${utcOffset}：  「${formattedCoordinate[0]}, ${formattedCoordinate[1]}」 <button onclick="copyToClipboard("${formattedCoordinate[0]}, ${formattedCoordinate[1]}")">複製</button><br>`;
+              resultText += `UTC ${utcOffset}，剩餘時間 ${hoursDiff} 小時 ${minutesDiff} 分鐘：<br>「${formattedCoordinate[0]}, ${formattedCoordinate[1]}」<br><button class="copyButton" onclick='copyToClipboard("${formattedCoordinate[0]}, ${formattedCoordinate[1]}")'>複製</button><br><br>`;
+              
+          }
+          resultElement.innerHTML = resultText;
+          show_pikachu_say_yes_Image();
+          } 
+          else {
+          resultElement.innerHTML = "找不到符合條件的潛在座標。";
+          show_pikachu_say_no_Image();
+          }
+        });
+
+        // 讀取資料庫中的座標數據
+        async function fetchCoordinates() {
+          try {
+            const response = await fetch("https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version-Coords_Database/master/coordinates.json");
+            return await response.json();
+          } 
+          catch (error) {
+            console.error("無法讀取資料庫中的座標數據:", error);
+            return [];
+          }
+        }
+
+    // 顯示提示框
+    function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        // 建立一個提示框並顯示
+        const alertBox = document.createElement("div");
+        alertBox.innerHTML = "座標已複製到剪貼簿";
+        alertBox.id = "alertBox";
+        alertBox.style.cssText = `
+          position: fixed;
+          bottom: 10%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #5fb4f5;
+          color: white;
+          padding: 15px 30px;
+          border-radius: 5px;
+          z-index: 9999;
+        `;
+        document.body.appendChild(alertBox);
+        setTimeout(function() {
+          // 2秒後移除提示框
+          alertBox.parentNode.removeChild(alertBox);
+        }, 2000); // 2秒後自動關閉提示框
+      })
+      .catch(err => console.error("無法複製座標:", err));
+  }
+
+
+    // 顯示警告框
+    function showWarningMessage(message) {
+      // 建立一個警告框並顯示
+      const alertBox = document.createElement("div");
+      alertBox.innerHTML = message;
+      alertBox.id = "alertBox";
+      alertBox.style.cssText = `
+          position: fixed;
+          bottom: 10%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #f55f5f; /* 紅色 */
+          color: white;
+          padding: 15px 30px;
+          border-radius: 5px;
+          z-index: 9999;
+      `;
+      document.body.appendChild(alertBox);
+      setTimeout(function() {
+          // 3秒後移除警告框
+          alertBox.parentNode.removeChild(alertBox);
+      }, 3000); // 3秒後自動關閉警告框
+    }
+
+    // 顯示5秒的圖片
+    function show_pikachu_say_yes_Image() {
+      const temporaryImage = document.createElement("img");
+      temporaryImage.src = "https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pikachu_say_yes.png";
+      temporaryImage.alt = "pikachu_say_yes.png";
+      temporaryImage.style.cssText = `
+          width: 200px;
+          height: auto;
+          position: fixed;
+          bottom: 200px;
+          right: 120px; /* 調整位置，讓圖片和原來的圖片不重疊 */
+          z-index: -1;
+      `;
+      document.body.appendChild(temporaryImage);
+
+      // 設置計時器，在5秒後刪除臨時圖片
+      setTimeout(function() {
+          temporaryImage.parentNode.removeChild(temporaryImage);
+      }, 5000);
+    }
+
+    // 顯示5秒的圖片
+    function show_pikachu_say_no_Image() {
+      const temporaryImage = document.createElement("img");
+      temporaryImage.src = "https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pikachu_say_no.png";
+      temporaryImage.alt = "pikachu_say_no.png";
+      temporaryImage.style.cssText = `
+          width: 200px;
+          height: auto;
+          position: fixed;
+          bottom: 200px;
+          right: 120px; /* 調整位置，讓圖片和原來的圖片不重疊 */
+          z-index: -1;
+      `;
+      document.body.appendChild(temporaryImage);
+
+      // 設置計時器，在5秒後刪除臨時圖片
+      setTimeout(function() {
+          temporaryImage.parentNode.removeChild(temporaryImage);
+      }, 5000);
+      }
+
+      window.onload = function() {
+      // 在這裡觸發短暫圖片事件
+      setTimeout(function() {
+          show_pikachu_say_hi_Image();
+      }, 1000); // 等待1秒後顯示第一張圖片
+    };
+
+    // 顯示5秒的圖片
+    function show_pikachu_say_hi_Image() {
+      const temporaryImage = document.createElement("img");
+      temporaryImage.src = "https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pikachu_say_hi.png";
+      temporaryImage.alt = "pikachu_say_hi.png";
+      temporaryImage.style.cssText = `
+          width: 200px;
+          height: auto;
+          position: fixed;
+          bottom: 200px;
+          right: 120px; /* 調整位置，讓圖片和原來的圖片不重疊 */
+          z-index: -1;
+      `;
+      document.body.appendChild(temporaryImage);
+
+      // 設置計時器，在5秒後刪除臨時圖片
+      setTimeout(function() {
+          temporaryImage.parentNode.removeChild(temporaryImage);
+      }, 5000);
+    }
+
+    // 顯示5秒的圖片
+    function show_pikachu_say_plz_Image() {
+      const temporaryImage = document.createElement("img");
+      temporaryImage.src = "https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pikachu_say_plz.png";
+      temporaryImage.alt = "pikachu_say_plz.png";
+      temporaryImage.style.cssText = `
+          width: 200px;
+          height: auto;
+          position: fixed;
+          bottom: 80px;
+          right: 120px; /* 調整位置，讓圖片和原來的圖片不重疊 */
+          z-index: -1;
+      `;
+      document.body.appendChild(temporaryImage);
+
+      // 設置計時器，在10秒後刪除臨時圖片
+      setTimeout(function() {
+          temporaryImage.parentNode.removeChild(temporaryImage);
+      }, 10000);
+    }
+
+
+    let idleTimeout; // 設置一個全域變數來存儲閒置時間
+
+    function resetIdleTimeout() {
+        // 每當用戶執行操作時，重置閒置時間
+        clearTimeout(idleTimeout);
+        startIdleTimeout();
+    }
+
+    function startIdleTimeout() {
+      // 設置閒置時間為 1 分鐘
+      idleTimeout = setTimeout(function() {
+          // 在閒置時間到達時執行某些操作，例如顯示一個提示框或觸發某個事件
+          show_pikachu_say_plz_Image();
+          // 在每次閒置後重新啟動閒置計時
+          startIdleTimeout();
+      }, 60000); // 1 分鐘
+    }
+
+    // 監聽滑鼠移動事件
+    document.addEventListener("mousemove", resetIdleTimeout);
+
+    // 監聽鍵盤按下事件
+    document.addEventListener("keydown", resetIdleTimeout);
+
+    // 監聽點擊事件
+    document.addEventListener("click", resetIdleTimeout);
+
+    // 初始時開始閒置計時
+    startIdleTimeout();
+
+    
+  </script>
+  <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pikachu.png" alt="pikachu.png" style="width: auto; height: 100px; position: fixed; bottom: 120px; right: 30px; z-index: -1;">
+
+  <footer style="position: fixed;">
+    <p>Copyright © Peter Yu，僅供參考，不負任何法律責任。其餘詳細內容可見我的<a href="https://github.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version">GitHub</a>，喜歡的話可以幫我加個Star喔！謝謝。</p>
+  </footer>
+
+</body>
+</html>
