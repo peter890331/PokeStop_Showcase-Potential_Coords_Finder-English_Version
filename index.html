@@ -186,7 +186,7 @@
               }
               const formattedCoordinate = coordinate.map(coord => coord.toFixed(5));
               // resultText += `UTC ${utcOffset}：  「${formattedCoordinate[0]}, ${formattedCoordinate[1]}」 <button onclick="copyToClipboard("${formattedCoordinate[0]}, ${formattedCoordinate[1]}")">複製</button><br>`;
-              resultText += `UTC ${utcOffset}，Remaining Time ${hoursDiff} hours ${minutesDiff} minutes: <br>「${formattedCoordinate[0]}, ${formattedCoordinate[1]}」<br><button class="copyButton" onclick='copyToClipboard("${formattedCoordinate[0]}, ${formattedCoordinate[1]}")'>Copy</button><br><br>`;
+              resultText += `UTC ${utcOffset}，Remaining ${hoursDiff} hours ${minutesDiff} minutes: <br>「${formattedCoordinate[0]}, ${formattedCoordinate[1]}」<br><button class="copyButton" onclick='copyToClipboard("${formattedCoordinate[0]}, ${formattedCoordinate[1]}")'>Copy</button><br><br>`;
               
           }
           resultElement.innerHTML = resultText;
