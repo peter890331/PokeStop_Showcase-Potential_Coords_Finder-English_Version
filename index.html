@@ -102,7 +102,7 @@
         console.log(timezoneId);
         
         // 獲得當前的UTC+0時間
-        var nowTWDate = moment.utc().tz("Etc/UTC");
+        var nowTWDate = moment.utc();
         console.log("當前UTC+0時間: " + nowTWDate.format("MM/DD HH:mm"));
 
         // 以時區ID處理夏令和冬令時區，獲得當地時間
