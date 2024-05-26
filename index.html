@@ -102,7 +102,7 @@
         console.log(timezoneId);
         
         // 獲得當前的UTC+0時間
-        var nowTWDate = moment();
+        var nowTWDate = moment.utc().tz("Europe/London");
         console.log("當前UTC+0時間: " + nowTWDate.format("MM/DD HH:mm"));
 
         // 以時區ID處理夏令和冬令時區，獲得當地時間
@@ -133,7 +133,7 @@
 
         // 檢查是否選擇了日期和時間
         if (isNaN(selectedDateTime.getTime())) {
-          showWarningMessage("請選擇日期與時間！");
+          showWarningMessage("Please select the date and time !");
           return; // 不執行後續代碼
         }
 
@@ -176,7 +176,7 @@
         // 將結果顯示在網頁上
         const resultElement = document.getElementById("result");
         if (top20Matches.length > 0) {
-          let resultText = "最接近的潛在座標：<br><br>";
+          let resultText = "Closest Potential Coords: <br><br>";
           for (const top20Matche of top20Matches) {
               const coordinate = top20Matche.coordinate;
               let utcOffset = top20Matche.utcOffset;
@@ -194,7 +194,7 @@
           show_pikachu_say_yes_Image();
           } 
           else {
-          resultElement.innerHTML = "找不到符合條件的潛在座標。";
+          resultElement.innerHTML = "Can't find any Potential Coords.";
           show_pikachu_say_no_Image();
           }
         });
