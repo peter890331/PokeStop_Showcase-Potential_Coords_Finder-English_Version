@@ -27,7 +27,7 @@ When there is a special event, a unique icon<img src= "https://github.com/peter8
     
 What's more, if a player has won the first place 100 times in the Showcase, that's when the medal reaches platinum level, will get a Ph. D. Pikachu, widely known, it's hard to get first place in the Showcase when playing in the city, that's why this Ph. D. Pikachu is so rare.   
 <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/pikachu.png" width="100px">    
-Therefore, for cheating players, there is no need to wait for cooldown time to participating in the Showcase, players can fly to time zones where the Showcase is about to end, go to a less populated area, participate in those unoccupied Showcase, can easily get the first place once, after the local Showcase, then fly directly to the next time zone and continue, in this way, can accumulate to the first place for a 100 times faster.
+Therefore, for cheating players, there is no need to wait for cooldown time to participating a Showcase, players can fly to time zones where the Showcase is about to end, go to a less populated area, participate in those unoccupied Showcase, can easily get the first place once, after the local Showcase, then fly directly to the next time zone and continue, in this way, can accumulate to the first place for a 100 times faster.
     
 However, a pokémon can only win first place once, so should prepare a few more designated pokémon.
 
