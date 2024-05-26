@@ -115,7 +115,7 @@
         console.log("UTC偏移量: " + utcOffset);
 
         // 計算與指定時間的時間差
-        const timeDiff = selectedDateTime.diff(localTime_.add(utcOffset, "hours"), "minutes");
+        const timeDiff = selectedDateTime.diff(nowTWDate, "minutes");
         const hoursDiff = Math.floor(timeDiff / 60);
         const minutesDiff = timeDiff % 60;
         
