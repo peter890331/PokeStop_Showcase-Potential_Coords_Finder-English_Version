@@ -46,11 +46,11 @@ Equipment and Software Requirements:
 
 ### Steps:
   1. Make sure there is a special event organising a Showcase at the moment.
-  2. Open [webpage][1] in browser.
+  2. Open [webpage][1] in browser.    
      <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage1.png" width="500px">
   3. In the Date & Time input box, select the date and time that the PokeStop Showcase end in your current time zone, and click OK.
   4. Select the desired Potential Coord and click Copy.
-     (If there are still ongoing Showcase in other time zones that can be found in the coordinates database of webpage, the top 20 closest Potential Coords will be displayed for copying; If cannot be found, it's possible that the Showcase has ended globally, or at least the range in the coordinates database has ended, it will be displayed that Can't find any Potential Coords.)
+     (If there are still ongoing Showcase in other time zones that can be found in the coordinates database of webpage, the top 20 closest Potential Coords will be displayed for copying; If cannot be found, it's possible that the Showcase has ended globally, or at least the range in the coordinates database has ended, it will be displayed that Can't find any Potential Coords.)    
      <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage2.png" width="500px">
   5. Use the cheating software to fly to the Potential Coord, start Pokémon Go and go around the local area looking for Showcase to participate.
   6. If can't find the Showcase, or if can't find those unoccupied Showcase, then go back to step 4 and select the desired Potential Coord again.
