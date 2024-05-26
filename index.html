@@ -120,21 +120,21 @@
         console.log(timezoneId);
         
         // 獲得當前的UTC+0時間
-        var nowTWDate = moment.utc();
-        console.log("當前UTC+0時間: " + nowTWDate.format("MM/DD HH:mm"));
+        var nowDate = moment.utc();
+        console.log("當前UTC+0時間: " + nowDate.format("MM/DD HH:mm"));
 
         // 以時區ID處理夏令和冬令時區，獲得當地時間
-        const localTime = moment(nowTWDate).tz(timezoneId[0]);
+        const localTime = moment(nowDate).tz(timezoneId[0]);
         console.log("當地時間: " + localTime.format("MM/DD HH:mm"));
 
         // 獲得當地UTC偏移量
-        const utcOffset = localTime.utcOffset()/60;
+        const utcOffset = nowDate.tz(timezoneId[0]).utcOffset()/60;
         console.log("UTC偏移量: " + utcOffset);
 
         // 計算與指定時間的時間差
         var d = new Date()
         var gmtHours = -d.getTimezoneOffset()/60;
-        const timeDiff = selectedDateTime.diff(nowTWDate.add(-gmtHours+utcOffset, "hours"), "minutes");
+        const timeDiff = selectedDateTime.diff(nowDate.add(-gmtHours+utcOffset, "hours"), "minutes");
         const hoursDiff = Math.floor(timeDiff / 60);
         const minutesDiff = timeDiff % 60;
         
@@ -147,7 +147,7 @@
     }
 
     document.getElementById("confirmButton").addEventListener("click", async function() {
-        // 取得輸入的日期與時間
+        // 取得輸入的日期與時間（依照瀏覽器時區）
         var selectedDateTime = new Date(document.getElementById("datetime").value);
 
         // 檢查是否選擇了日期和時間
@@ -159,7 +159,6 @@
         selectedDateTime = moment(selectedDateTime);
         console.log("輸入的結束時間： " + selectedDateTime.format("MM/DD HH:mm"));
         console.log("-----------------------------");
-
 
         // 讀取資料庫中的座標數據
         const coordinates = await fetchCoordinates();
