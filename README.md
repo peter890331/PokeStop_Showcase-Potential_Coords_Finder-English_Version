@@ -27,16 +27,16 @@ When there is a special event, a unique icon<img src= "https://github.com/peter8
     
 What's more, if a player has won the first place 100 times in the Showcase, that's when the medal reaches platinum level, will get a Ph. D. Pikachu, widely known, it's hard to get first place in the Showcase when playing in the city, that's why this Ph. D. Pikachu is so rare.   
 <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/pikachu.png" width="100px">    
-Therefore, for cheating players, there is no need to wait for cooldown time to participating a Showcase, players can fly to time zones where the Showcase is about to end, go to a less populated area, participate in those unoccupied Showcase, can easily get the first place once, after the local Showcase, then fly directly to the next time zone and continue, in this way, can accumulate to the first place for a 100 times faster.
+Therefore, for cheating players, there is no need to wait for cooldown time to participating a Showcase, players can fly to those time zones where the Showcase is about to end, go to a less populated area, participate in those unoccupied Showcases, can easily get the first place once, after the local Showcases, then fly directly to the next time zone and continue, in this way, can accumulate to the first place for a 100 times faster.
     
 However, a pokémon can only win first place once, so should prepare a few more designated pokémon.
 
 ## Overview
-This webpage will provide cheating players to find the local coordinates of Showcase in other time zones that are about to end and **maybe** are unoccupied, which I have added manually from time to time for informational purposes only.  
+This webpage provide cheating players to find the local coordinates of Showcase in other time zones that are about to end and **may not** be occupied, which are added manually by me from time to time for informational purposes only.  
 
-These coordinates only mean that the area **may** be less populated, and in my experience I think **may** have a better chance of finding unoccupied Showcase, but it's mostly just luck of the draw.    
+These coordinates only mean that the area **may** be less populated, and in my experience I think **may** have a better chance of finding unoccupied Showcases, but it's mostly just luck of the draw.    
 
-And these are what I call Potential Coords. (Although the Showcase is held at a regular PokeStop each season, it is not always possible after a season change, so I focus on providing local coordinates.)
+And these are what I call Potential Coords. (Although Showcases is held at regular PokeStops each season, it is not always possible after season change, so I focus on providing local coordinates.)
 
 Equipment and Software Requirements:
   1. A phone or computer with a browser.
@@ -45,15 +45,15 @@ Equipment and Software Requirements:
 ## How to use, For users
 
 ### Steps:
-  1. Make sure there is a special event organising a Showcase at the moment.
+  1. Make sure there is a special event organising Showcase at the moment.
   2. Open [webpage][1] in browser.    
      <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage1.png" width="500px">
   3. In the Date & Time input box, select the date and time that the PokeStop Showcase end in your current time zone, and click OK.
   4. Select the desired Potential Coord and click Copy.
-     (If there are still ongoing Showcase in other time zones that can be found in the coordinates database of webpage, the top 20 closest Potential Coords will be displayed for copying; If cannot be found, it's possible that the Showcase has ended globally, or at least the range in the coordinates database has ended, it will be displayed that Can't find any Potential Coords.)    
+     (If there are still ongoing Showcases in other time zones that can be found in the coordinates database of webpage, the top 20 closest Potential Coords will be displayed for copying; If cannot be found, it's possible that Showcases have been ended globally, or at least the range in the coordinates database have been ended, will be displayed that Can't find any Potential Coords.)    
      <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage2.png" width="500px">
-  5. Use the cheating software to fly to the Potential Coord, start Pokémon Go and go around the local area looking for Showcase to participate.
-  6. If can't find the Showcase, or if can't find those unoccupied Showcase, then go back to step 4 and select the desired Potential Coord again.
+  5. Use the cheating software to fly to the Potential Coord, start Pokémon Go and go around the local area looking for Showcases to participate.
+  6. If can't find Showcases, or if can't find those unoccupied Showcases, then go back to step 4 and select the desired Potential Coord again.
   7. Accumulate to the first place for a 100 times faster and get a Ph. D. Pikachu.
 
 ## Make updates, For Developers or the future ?
