@@ -1,6 +1,6 @@
 
 <!--
-    程式名稱: PokeStop_Showcase-Potential_coords_Finder-English_Version
+    程式名稱: 寶可補給站選秀會 - 潛在座標查詢器 - 中文版 (PokeStop_Showcase-Potential_coords_Finder-English_Version)
     作者: Peter Yu
     版本: 2.0
     日期: 2024/05/23
@@ -13,7 +13,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PokeStop_Showcase-Potential_coords_Finder-English_Version</title>
+  <title>寶可補給站選秀會 - 潛在座標查詢器 - 中文版</title>
   <link rel="icon" href="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/my_icon.png">
   <style>
     body {
@@ -68,21 +68,39 @@
     }
     
   </style>
+  <!-- Google 廣告 驗證 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9957114939030044"
+  crossorigin="anonymous"></script>
 
 </head>
 <body>
   <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pokemon_go_icon.png" alt="pokemon_go_icon.png" style="width: auto; height: 100px;">
   <div style="position: relative;">
-    <h1>PokeStop_Showcase-Potential_coords_Finder-English_Version</h1>
+    <h1>寶可補給站選秀會 - 潛在座標查詢器 - 中文版</h1>
     <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/showcase_icon.png" alt="showcase_icon.png" style="width: auto; height: 75%; position: absolute; top: -10px; left: 50px; z-index: -1; transform: rotate(-20deg);">
     <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/earth.png" alt="earth.png" style="width: auto; height: 75%; position: absolute; top: 2px; right: 15px; z-index: -1; transform: rotate(10deg);">
   </div>
   <div id="formContainer">
-    <label for="datetime">Please select the date and time when the PokeStop Showcase will end in the UTC+0 time zone：</label>
+    <label for="datetime">請選擇寶可補給站選秀會在台灣時區結束的日期與時間：</label>
     <div id="confirmButtonContainer">
       <input type="datetime-local" id="datetime" name="datetime">
-      <button id="confirmButton">OK</button>
+      <button id="confirmButton">確定</button>
     </div>
+
+    <!-- Google 廣告 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9957114939030044"
+     crossorigin="anonymous"></script>
+    <!-- PokeStop_Showcase-Potential_coords_Finder-English_Version-1 -->
+    <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9957114939030044"
+     data-ad-slot="8517705457"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+    <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
     <p id="result"></p>
   </div>
 
@@ -114,7 +132,7 @@
         console.log("UTC偏移量: " + utcOffset);
 
         // 計算與指定時間的時間差
-        const timeDiff = selectedDateTime.diff(nowTWDate.add(-selectedDateTime.getTimezoneOffset()/60+utcOffset, "hours"), "minutes");
+        const timeDiff = selectedDateTime.diff(nowTWDate.add(-8+utcOffset, "hours"), "minutes");
         const hoursDiff = Math.floor(timeDiff / 60);
         const minutesDiff = timeDiff % 60;
         
@@ -201,7 +219,7 @@
         // 讀取資料庫中的座標數據
         async function fetchCoordinates() {
           try {
-            const response = await fetch("https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version-Coords_Database/master/coordinates.json");
+            const response = await fetch("https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-Coords_Database/master/coordinates.json");
             return await response.json();
           } 
           catch (error) {
@@ -388,6 +406,18 @@
     
   </script>
   <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/pikachu.png" alt="pikachu.png" style="width: auto; height: 100px; position: fixed; bottom: 120px; right: 30px; z-index: -1;">
+
+  <!-- Google 廣告 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9957114939030044"
+  crossorigin="anonymous"></script>
+  <!-- PokeStop_Showcase-Potential_coords_Finder-English_Version-2 -->
+  <ins class="adsbygoogle"
+  style="display:inline-block;width:728px;height:90px"
+  data-ad-client="ca-pub-9957114939030044"
+  data-ad-slot="4773901564"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
   <footer style="position: fixed;">
     <p>Copyright © Peter Yu，僅供參考，不負任何法律責任。其餘詳細內容可見我的<a href="https://github.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version">GitHub</a>，喜歡的話可以幫我加個Star喔！謝謝。</p>
