@@ -21,7 +21,7 @@ PokeStop_Showcase-Potential_Coords_Finder-English_Version, made by Peter Yu.
   [1]: https://peter890331.github.io/PokeStop_Showcase-Potential_Coords_Finder-English_Version/    
 
 ## Foreword
-In Pokémon GO, there's a feature called the PokeStop Showcase, that allows players receive rewards by comparing the size of their pokémon.      
+In Pokémon GO, there's a feature called the PokeStop Showcase, that allows players receive prizes by comparing the size of their pokémon.      
 <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/showcase_icon.png" width="100px">    
 When there is a special event, a unique icon<img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/showcase_icon.png" width="20px"> will appear on some PokeStop, players can participate in the Showcase by clicking on the PokeStop, then clicking on the Showcase button and inserting a designated pokémon, at the end of the Showcase, all participating players will be rewarded with stardust and XP, the top three players will also be rewarded with prizes such as egg incubators and star pieces, and the first trainer will receive a medal.    
     
