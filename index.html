@@ -106,20 +106,28 @@
         console.log("當前UTC+0時間: " + nowTWDate.format("MM/DD HH:mm"));
 
         // 以時區ID處理夏令和冬令時區，獲得當地時間
-        const localTime = moment(nowTWDate).tz(timezoneId[0]);
-        const localTime_ = moment(nowTWDate).tz(timezoneId[0]);
+        const nowLocalTime = nowTWDate.clone().tz(timezoneId[0]);
         console.log("當地時間: " + localTime.format("MM/DD HH:mm"));
 
+        // 設置當地時間的活動結束時間
+        const endTimeLocal = nowLocalTime.clone().set({
+          hour: selectedTimeLocal.getHours(),
+          minute: selectedTimeLocal.getMinutes(),
+          second: 0,
+          millisecond: 0
+        });
+        console.log("當地活動結束時間:", endTimeLocal.format("MM/DD HH:mm"));
+
         // 獲得當地UTC偏移量
-        const utcOffset = localTime.utcOffset()/60;
-        console.log("UTC偏移量: " + utcOffset);
+        const utcOffset = endTimeLocal.utcOffset() / 60;
+        console.log("UTC偏移量:", utcOffset);
 
         // 計算與指定時間的時間差
-        const timeDiff = selectedDateTime.diff(nowTWDate.add(utcOffset, "hours"), "minutes");
+        const timeDiff = endTimeLocal.diff(nowLocalTime, "minutes");
         const hoursDiff = Math.floor(timeDiff / 60);
         const minutesDiff = timeDiff % 60;
-        
-        return { localTime, utcOffset, hoursDiff, minutesDiff };
+
+        return { localTime: endTimeLocal, utcOffset, hoursDiff, minutesDiff };
       } 
       catch (error) {
         console.error("獲得指定座標的當地時間時出錯:", error);
@@ -129,7 +137,7 @@
 
     document.getElementById("confirmButton").addEventListener("click", async function() {
         // 取得輸入的日期與時間
-        var selectedDateTime = new Date(document.getElementById("datetime").value);
+        var selectedTimeLocal = new Date(document.getElementById("datetime").value);
 
         // 檢查是否選擇了日期和時間
         if (isNaN(selectedDateTime.getTime())) {
@@ -137,8 +145,11 @@
           return; // 不執行後續代碼
         }
 
-        selectedDateTime = moment(selectedDateTime);
-        selectedDateTime = selectedDateTime.utc();
+        // 將時間字符串解析為 Date 對象
+        const [hours, minutes] = selectedTimeInput.split(':').map(Number);
+        selectedDateTime = new Date();
+        selectedDateTime.setHours(hours, minutes, 0, 0);
+
         console.log("輸入的結束時間： " + selectedDateTime.format("MM/DD HH:mm"));
         console.log("-----------------------------");
 
