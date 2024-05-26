@@ -138,7 +138,7 @@
         }
 
         selectedDateTime = moment(selectedDateTime);
-        selectedDateTime = selectedDateTime.utc().toDate();
+        selectedDateTime = selectedDateTime.utc();
         console.log("輸入的結束時間： " + selectedDateTime.format("MM/DD HH:mm"));
         console.log("-----------------------------");
 
