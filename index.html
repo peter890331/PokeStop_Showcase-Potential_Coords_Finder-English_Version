@@ -140,7 +140,7 @@
         var selectedTimeLocal = new Date(document.getElementById("datetime").value);
 
         // 檢查是否選擇了日期和時間
-        if (isNaN(selectedDateTime.getTime())) {
+        if (isNaN(selectedTimeLocal.getTime())) {
           showWarningMessage("Please select the date and time !");
           return; // 不執行後續代碼
         }
