@@ -137,10 +137,10 @@
 
     document.getElementById("confirmButton").addEventListener("click", async function() {
         // 取得輸入的日期與時間
-        var selectedTimeLocal = new Date(document.getElementById("datetime").value);
+        var selectedTimeInput = new Date(document.getElementById("datetime").value);
 
         // 檢查是否選擇了日期和時間
-        if (isNaN(selectedTimeLocal.getTime())) {
+        if (isNaN(selectedTimeInput.getTime())) {
           showWarningMessage("Please select the date and time !");
           return; // 不執行後續代碼
         }
