@@ -13,7 +13,7 @@ PokeStop_Showcase-Potential_Coords_Finder-English_Version, made by Peter Yu.
   [PokeStop Showcase - Potential Coords Finder - English Version (PokeStop_Showcase-Potential_Coords_Finder-English_Version)][1]    
   https://peter890331.github.io/PokeStop_Showcase-Potential_Coords_Finder-English_Version/    
   
-  If you like it, please add a star for me ! Thanks.
+  If you like it, please add a star for me ! Thanks.    
   <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/github_star.png" width="250px">
       
   <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage1.png" width="500px">   
