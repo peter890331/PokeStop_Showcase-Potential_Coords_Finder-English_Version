@@ -32,7 +32,7 @@ Therefore, for cheating players, there is no need to wait for cooldown time to p
 However, a pokémon can only win first place once, so should prepare a few more designated pokémon.
 
 ## Overview
-This webpage provide cheating players to find the local coordinates of Showcase in other time zones that are about to end and **may not** be occupied, which are added manually by me from time to time for informational purposes only.  
+This webpage provide cheating players to find the local coordinates of Showcase in other time zones that are about to end and **may not** be occupied, which are added manually by me from time to time for informational only.  
 
 These coordinates only mean that the area **may** be less populated, and in my experience I think **may** have a better chance of finding unoccupied Showcases, but it's mostly just luck of the draw.    
 
