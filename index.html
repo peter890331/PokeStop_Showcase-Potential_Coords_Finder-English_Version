@@ -36,7 +36,7 @@
       font-size: 12px;
     }
     h1 {
-    font-size: 15px;                      /* 設定字體大小為 24 像素 */
+    font-size: 12px;                      /* 設定字體大小為 24 像素 */
     }
     #formContainer {
       display: flex;
@@ -45,8 +45,12 @@
       justify-content: center;
     }
     label {
+      display: block;             /* 设置 label 为块级元素 */
       margin-bottom: 20px;
-      font-size: 15px;                    /* 設置字體大小為 14 像素 */
+      font-size: 15px;            /* 设置字体大小为 15 像素 */
+      text-align: center;         /* 设置文本居中对齐 */
+      width: 100%;                /* 设置宽度为 100%，确保占据整个容器宽度 */
+      white-space: normal;        /* 允许换行 */
     }
     input {
       margin-bottom: 60px;
@@ -77,8 +81,7 @@
     <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/earth.png" alt="earth.png" style="width: auto; height: 75%; position: absolute; top: -8px; right: 82px; z-index: -1; opacity: 0.8;">
   </div>
   <div id="formContainer">
-    <label for="datetime">Please select the date and time </label>
-    <label for="datetime">that the PokeStop Showcase end in your current time zone: </label>
+    <label for="datetime">Please select the date and time that the PokeStop Showcase end in your current time zone: </label>
     <div id="confirmButtonContainer">
       <input type="datetime-local" id="datetime" name="datetime">
       <button id="confirmButton">OK</button>
