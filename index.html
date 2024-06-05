@@ -75,6 +75,11 @@
     .copyButton {
       width: 300px; /* 按鈕的寬度 */
     }
+    .loading-container {
+      display: none; /* 預設不顯示 */
+      align-items: center;
+      justify-content: center;
+    }
     
   </style>
 </head>
@@ -90,6 +95,9 @@
     <div id="confirmButtonContainer">
       <input type="datetime-local" id="datetime" name="datetime">
       <button id="confirmButton">OK</button>
+    </div>
+    <div class="loading-container" id="loadingContainer">
+      <img src="https://raw.githubusercontent.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version/figures/figures/loading.gif" alt="Loading..." style="width: 50px; height: auto;">
     </div>
     <p id="result"></p>
   </div>
@@ -146,6 +154,10 @@
           return; // 不執行後續代碼
         }
 
+        // 顯示載入中的 gif
+        document.getElementById("loadingContainer").style.display = "flex";
+        document.getElementById("result").style.display = "none";
+
         selectedDateTime = moment(selectedDateTime);
         console.log("輸入的結束時間： " + selectedDateTime.format("MM/DD HH:mm"));
         console.log("-----------------------------");
@@ -180,6 +192,10 @@
 
         // 只輸出前 20 個匹配
         const top20Matches = allMatches.slice(0, 20);
+        
+        // 隱藏載入中的 gif，顯示結果
+        document.getElementById("loadingContainer").style.display = "none";
+        document.getElementById("result").style.display = "block";
 
         // 將結果顯示在網頁上
         const resultElement = document.getElementById("result");
