@@ -59,6 +59,12 @@ Equipment and Software Requirements:
 ## Make updates, For Developers or the future ?
 The coordinates are added manually by me from time to time, but I have limited manpower, it's hard to add a lot of Potential Coords, so if anyone has Potential Coords they have found and would like to help add it to help other players, maybe send it to my email? or open an Issue let me know? Thank you very much.
 
+## Database
+Can also visit my coordinates database directly, all coordinates are public, if anyone provides Potential Coords they have found, the coordinates provider will be thanked in the coordinates database.    
+[PokeStop_Showcase-Potential_Coords_Finder-Coords_Database][2]
+
+[2]: https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-Coords_Database
+
 ---
 
 ### ❗ 再次警告：僅以此練習網頁製作，請勿在遊戲中使用外掛，否則後果自負！本人對此內容不負任何法律責任。 ❗    
