@@ -2,8 +2,8 @@
 <!--
     程式名稱: PokeStop Showcase - Potential Coords Finder - English_Version (PokeStop_Showcase-Potential_Coords_Finder-English_Version)
     作者: Peter Yu
-    版本: 3.0
-    日期: 2024/05/26
+    版本: 4.0
+    日期: 2026/04/21
     用途: 這是一個座標查詢器網頁，用來查詢Pokémon GO中在其他時區即將結束且可能未被佔領的選秀會當地座標。這些座標由我手動不定時添加，我有空的話啦。
     備註: 我知道寫得很亂，但我懶得改。
 -->
@@ -173,7 +173,9 @@
             const latitude = coordinate[0];
             const longitude = coordinate[1];
             console.log("緯度：" + latitude + ", 經度：" + longitude);
-            const { localTime, utcOffset, hoursDiff, minutesDiff } = await getLocalTimeAndUTCOffset(latitude, longitude, selectedDateTime);
+            const result = await getLocalTimeAndUTCOffset(latitude, longitude, selectedDateTime);
+            if (!result) continue;
+            const { localTime, utcOffset, hoursDiff, minutesDiff } = result;
 
             // 如果當地時間還沒到輸入的日期與時間，且只篩選最接近的時區
             if (localTime && localTime.format("MM/DD HH:mm") < selectedDateTime.format("MM/DD HH:mm")) {
