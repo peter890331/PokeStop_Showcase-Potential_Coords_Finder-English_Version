@@ -1,7 +1,7 @@
 # PokeStop Showcase - Potential Coords Finder
 PokeStop_Showcase-Potential_Coords_Finder-English_Version, made by Peter Yu.
 
-> This is a coordinate finder webpage used to find the coordinates of showcase in Pokémon GO that are about to end in other time zones and may not be occupied.    
+> This is a coordinate finder webpage used to find the coordinates of showcase in Pokémon GO that are about to end in other time zones and **may not** be occupied.    
 > The coordinates are added manually by me from time to time, maybe?
 
 ### ❗ 警告：僅以此練習網頁製作，請勿在遊戲中使用外掛，否則後果自負！本人對此內容不負任何法律責任。 ❗    
