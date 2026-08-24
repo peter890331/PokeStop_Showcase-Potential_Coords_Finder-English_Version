@@ -1,4 +1,4 @@
-# PokeStop Showcase - Potential Coords Finder - English Version
+# PokeStop Showcase - Potential Coords Finder
 PokeStop_Showcase-Potential_Coords_Finder-English_Version, made by Peter Yu.
 
 > This is a coordinate finder webpage used to find the coordinates of showcase in Pokémon GO that are about to end in other time zones and may not be occupied.    
