@@ -14,7 +14,7 @@ PokeStop_Showcase-Potential_Coords_Finder-English_Version, made by Peter Yu.
   [![Website](https://img.shields.io/badge/Potential_Coords_Finder-webpage-blue?logo=googlechrome)](https://peter890331.github.io/PokeStop_Showcase-Potential_Coords_Finder-English_Version/)
   
   Please star if you like it! Thanks.    
-  <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/github_star.png" width="250px">
+  [![GitHub stars](https://img.shields.io/github/stars/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version?style=social)](https://github.com/peter890331/PokeStop_Showcase-Potential_coords_Finder-English_Version)
       
   <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage1.png" width="500px">   
   
