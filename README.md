@@ -1,4 +1,4 @@
-# PokeStop Showcase - Potential Coords Finder - English Version (PokeStop_Showcase-Potential_Coords_Finder-English_Version)
+# PokeStop Showcase - Potential Coords Finder - English Version
 PokeStop_Showcase-Potential_Coords_Finder-English_Version, made by Peter Yu.
 
 > This is a coordinate finder webpage used to find the coordinates of showcase in Pokémon GO that are about to end in other time zones and may not be occupied.    
@@ -10,10 +10,10 @@ PokeStop_Showcase-Potential_Coords_Finder-English_Version, made by Peter Yu.
 <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/pokemon_go_icon.png" width="300px">
 
 ## Webpage
-  [PokeStop Showcase - Potential Coords Finder - English Version (PokeStop_Showcase-Potential_Coords_Finder-English_Version)][1]    
-  https://peter890331.github.io/PokeStop_Showcase-Potential_Coords_Finder-English_Version/    
+  [PokeStop Showcase - Potential Coords Finder - English Version][1]      
+  [![Website](https://img.shields.io/badge/Potential_Coords_Finder-webpage-blue?logo=googlechrome)](https://peter890331.github.io/PokeStop_Showcase-Potential_Coords_Finder-English_Version/)
   
-  If you like it, please add a star for me ! Thanks.    
+  Please star if you like it! Thanks.    
   <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/github_star.png" width="250px">
       
   <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage1.png" width="500px">   
@@ -48,7 +48,7 @@ Equipment and Software Requirements:
   1. Make sure there is a special event organising Showcase at the moment.
   2. Open [webpage][1] in browser.    
      <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage1.png" width="500px">
-  3. In the Date & Time input box, select the date and time that the PokeStop Showcase end in your current time zone, and click OK.
+  3. In the Date & Time input box, select the date and time that the PokeStop Showcase end in your current time zone, and click Confirm.
   4. Select the desired Potential Coord and click Copy.    
      (If there are still ongoing Showcases in other time zones that can be found in the coordinates database of webpage, the top 20 closest Potential Coords will be displayed for copying; If cannot be found, it's possible that Showcases have been ended globally, or at least the range in the coordinates database have been ended, will be displayed that Can't find any Potential Coords.)    
      <img src= "https://github.com/peter890331/PokeStop_Showcase-Potential_Coords_Finder-English_Version/blob/figures/figures/webpage2.png" width="500px">
