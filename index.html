@@ -201,8 +201,12 @@
           return;
         }
 
-        if (selectedDateTime.getTime() < Date.now()) {
-          showWarningMessage("The selected time is in the past, please select again!");
+        const selectedUTC = dayjs(selectedDateTime).utc();
+        
+        const currentLatestTime = dayjs().utc().subtract(12, 'hour');
+
+        if (selectedUTC.isBefore(currentLatestTime)) {
+          showWarningMessage("The selected time has passed!");
           return;
         }
 
@@ -369,6 +373,7 @@
           color: white;
           padding: 15px 30px;
           border-radius: 5px;
+          font-size: 13px;
           z-index: 9999;
       `;
       document.body.appendChild(alertBox);
